@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BMR 計算器</title>
+  <script>
+    function calculateBMR() {
+      var height = document.getElementById("height").value;
+      var weight = document.getElementById("weight").value;
+      var gender = document.querySelector('input[name="gender"]:checked').value;
+      var age = document.getElementById("age").value;
+      
+      // 使用 Harris-Benedict 公式計算 BMR
+      var bmr;
+      if (gender === "male") {
+        bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+      } else if (gender === "female") {
+        bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+      }
+      
+      document.getElementById("result").innerHTML = "您的 BMR 是：" + bmr.toFixed(2);
+    }
+  </script>
+</head>
+<body>
+  <h1>BMR 計算器</h1>
+  <form>
+    <label for="height">身高（cm）：</label>
+    <input type="number" id="height" required><br><br>
+    
+    <label for="weight">體重（kg）：</label>
+    <input type="number" id="weight" required><br><br>
+    
+    <label for="age">年齡：</label>
+    <input type="number" id="age" required><br><br>
+    
+    <label for="gender">性別：</label>
+    <input type="radio" name="gender" value="male" checked>男性
+    <input type="radio" name="gender" value="female">女性<br><br>
+    
+    <button type="button" onclick="calculateBMR()">計算</button>
+  </form>
+  
+  <div id="result"></div>
+</body>
+</html>
+                                                                                                                                                                                                                                                                
